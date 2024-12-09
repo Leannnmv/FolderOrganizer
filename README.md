@@ -11,4 +11,5 @@ A Python program to organize files in a selected folder into categories such as 
 1. Clone the repository.
 2. Install required dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install PyQt5
+   pip install pathlib
