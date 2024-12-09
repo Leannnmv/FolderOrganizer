@@ -14,7 +14,7 @@ A Python program to organize files in a selected folder into categories such as 
    pip install PyQt5
    pip install pathlib
 
-🤝 Contributions
+## 🤝 Contributions
 
 We welcome contributions and improvements to this project! If you'd like to contribute, feel free to fork the repository and submit a pull request with your changes.
 How to Contribute:
