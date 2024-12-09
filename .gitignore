@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+
+# PyQt5 build files
+build/
+dist/
+
+# System files
+.DS_Store
+Thumbs.db
