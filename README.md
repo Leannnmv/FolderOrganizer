@@ -6,6 +6,7 @@ A Python program to organize files in a selected folder into categories such as 
 - Graphical interface to select a folder.
 - Categorizes files based on extensions.
 - Creates subfolders if they don't exist.
+- Coming soon: A standalone executable version for easier usage.
 
 ## Installation
 1. Clone the repository.
