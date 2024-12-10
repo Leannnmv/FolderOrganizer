@@ -5,7 +5,7 @@ This program organizes files in a directory selected by the user.
 """
 import sys
 import logging
-from organizer import organize_directory
+from organizer import organize_directory, create_folders
 from interface import get_folder_path
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -15,6 +15,7 @@ def main():
         folder_path = get_folder_path()
         if folder_path:
             logging.info(f"Selected folder: {folder_path}")
+            create_folders(folder_path)
             organize_directory(folder_path)
             logging.info("Organization completed successfully.")
         else:
