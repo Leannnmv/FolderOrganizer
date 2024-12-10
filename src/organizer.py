@@ -22,7 +22,7 @@ def create_folders(base_path: str) -> None:
     Returns:
         None
     """
-    directories = ['Images', 'Videos', 'Music', 'Documents']
+    directories = ['Images', 'Videos', 'Music', 'Documents', 'Others']
     
     for folder in directories:
         dir_path = Path(base_path) / folder
@@ -86,15 +86,29 @@ def organize_directory(directory_path: str) -> None:
             util.is_document: Path(directory_path) / "Documents"
         }
         
+        others_folder = Path(directory_path) / "Others"
+        
+        # Create the "Others" folder if it doesn't exist
+        if not others_folder.is_dir():
+            others_folder.mkdir(parents=True, exist_ok=True)
+
         # Iterate over the files and move them to the appropriate folder
         for file in files_list:
             file_path = Path(directory_path) / file
             file_extension = util.get_file_extension(file_path)
             
+            moved = False  # Flag to check if the file was moved to a valid folder
+            
             for check_function, folder_name in folder_mapping.items():
                 if check_function(file_extension):
                     move_file(file_path, folder_name)
+                    moved = True
                     break
+            
+            # If the file wasn't moved to any of the valid folders, move it to "Others"
+            if not moved:
+                move_file(file_path, others_folder)
+                
     except Exception as e:
         logging.error(f"Error organizing directory {directory_path}: {e}")
     
