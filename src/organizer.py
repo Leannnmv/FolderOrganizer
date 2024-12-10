@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 import utilities as util
 
@@ -6,6 +7,9 @@ This module provides functions to organize files into specific directories
 based on their extensions. It allows creating necessary folders and moving 
 files into their corresponding folder (Images, Videos, Music, Documents).
 """
+
+# Set up logging configuration
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def create_folders(base_path: str) -> None:
     """
@@ -24,7 +28,9 @@ def create_folders(base_path: str) -> None:
         dir_path = Path(base_path) / folder
         if not dir_path.is_dir():
             dir_path.mkdir(parents=True, exist_ok=True)
-
+            logging.info(f"Created folder: {dir_path}")
+        else:
+            logging.info(f"Folder already exists: {dir_path}")
     return None
 
 def move_file(file_path: str, target_folder: str) -> None:
@@ -52,6 +58,7 @@ def move_file(file_path: str, target_folder: str) -> None:
     
     # Move the file
     file.rename(destination_file)
+    logging.info(f"Moved file: {file} to {destination_file}")
     
     return None
 
@@ -67,24 +74,28 @@ def organize_directory(directory_path: str) -> None:
     Returns:
         None
     """
-    files_list = util.list_files_in_directory(directory_path)
+    try:
+        files_list = util.list_files_in_directory(directory_path)
+        logging.info(f"Found {len(files_list)} files in {directory_path}.")
     
-    # Mapping functions that check file type against corresponding folder paths
-    folder_mapping = {
-        util.is_image: Path(directory_path) / "Images",
-        util.is_video: Path(directory_path) / "Videos",
-        util.is_music: Path(directory_path) / "Music",
-        util.is_document: Path(directory_path) / "Documents"
+        # Mapping functions that check file type against corresponding folder paths
+        folder_mapping = {
+            util.is_image: Path(directory_path) / "Images",
+            util.is_video: Path(directory_path) / "Videos",
+            util.is_music: Path(directory_path) / "Music",
+            util.is_document: Path(directory_path) / "Documents"
         }
-    
-    # Iterate over the files and move them to the appropriate folder
-    for file in files_list:
-        file_path = Path(directory_path) / file
-        file_extension = util.get_file_extension(file_path)
         
-        for check_function, folder_name in folder_mapping.items():
-            if check_function(file_extension):
-                move_file(file_path, folder_name)
-                break
+        # Iterate over the files and move them to the appropriate folder
+        for file in files_list:
+            file_path = Path(directory_path) / file
+            file_extension = util.get_file_extension(file_path)
+            
+            for check_function, folder_name in folder_mapping.items():
+                if check_function(file_extension):
+                    move_file(file_path, folder_name)
+                    break
+    except Exception as e:
+        logging.error(f"Error organizing directory {directory_path}: {e}")
     
     return None
