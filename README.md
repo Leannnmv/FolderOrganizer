@@ -6,15 +6,17 @@ A Python program to organize files in a selected folder into categories such as 
 - Graphical interface to select a folder.
 - Categorizes files based on extensions.
 - Creates subfolders if they don't exist.
-- Coming soon: A standalone executable version for easier usage.
 
 ## Installation
-1. Clone the repository.
-2. Install required dependencies:
-   ```bash
-   pip install PyQt5
-   pip install pathlib
-   ```
+
+To install the project, follow these steps:
+
+1. Go to the [Releases page](https://github.com/Leannnmv/FolderOrganizer/releases).
+2. Download the file named `Folder_Organizer_v1.0.0.zip`.
+3. Extract the contents of the downloaded ZIP file.
+4. Follow the instructions inside the extracted folder to use.
+
+That's it! You're ready to go.
 
 ## 🤝 Contributions
 
