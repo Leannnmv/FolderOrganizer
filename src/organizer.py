@@ -71,15 +71,15 @@ def organize_directory(directory_path: str) -> None:
     
     # Mapping functions that check file type against corresponding folder paths
     folder_mapping = {
-        util.is_image: directory_path + "/Images",
-        util.is_video: directory_path  + "/Videos",
-        util.is_music: directory_path  + "/Music",
-        util.is_document: directory_path  + "/Documents"
-    }
+        util.is_image: Path(directory_path) / "Images",
+        util.is_video: Path(directory_path) / "Videos",
+        util.is_music: Path(directory_path) / "Music",
+        util.is_document: Path(directory_path) / "Documents"
+        }
     
     # Iterate over the files and move them to the appropriate folder
     for file in files_list:
-        file_path = directory_path + '/' + file
+        file_path = Path(directory_path) / file
         file_extension = util.get_file_extension(file_path)
         
         for check_function, folder_name in folder_mapping.items():
