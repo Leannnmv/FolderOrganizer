@@ -1,9 +1,8 @@
 # Folder Organizer
 
-A Python program to organize files in a selected folder into categories such as Images, Videos, Music, and Documents.
+A Python program to organize files in a selected folder into categories such as Images, Videos, Music, Documents, and Others.
 
 ## Features
-- Graphical interface to select a folder.
 - Categorizes files based on extensions.
 - Creates subfolders if they don't exist.
 
@@ -12,7 +11,7 @@ A Python program to organize files in a selected folder into categories such as 
 To install the project, follow these steps:
 
 1. Go to the [Releases page](https://github.com/Leannnmv/FolderOrganizer/releases).
-2. Download .zip/.tar file (Windows or Linux)
+2. Download `.zip/.tar` file (Windows or Linux)
 3. Extract the contents of the downloaded file.
 4. Follow the instructions inside the extracted folder to use.
 
