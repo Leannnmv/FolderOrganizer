@@ -12,9 +12,9 @@ class App:
         and processes the confirmation.
         """
         self.root = tk.Tk()
-        self.root.withdraw()  # Oculta la ventana principal, ya que solo necesitamos el diálogo
+        self.root.withdraw()
         self.folder_path = self.select_and_confirm_folder()
-        self.root.quit()  # Cierra el programa después de la confirmación
+        self.root.quit()
 
     def select_and_confirm_folder(self) -> str:
         """
